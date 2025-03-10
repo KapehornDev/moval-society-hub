@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { useAuth } from '@/hooks/useAuth';
 
 interface AuthCardProps {
   type: 'login' | 'register';
@@ -15,16 +15,41 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+  const { signIn, signUp } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulating auth - will be replaced with Supabase integration
-    setTimeout(() => {
-      console.log('Auth data:', { email, password, name });
+    try {
+      if (type === 'login') {
+        const { error } = await signIn(email, password);
+        if (!error) {
+          navigate('/');
+        }
+      } else {
+        // For registration, split the name into first and last name
+        const nameParts = name.trim().split(' ');
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ') || '';
+        
+        const userData = {
+          first_name: firstName,
+          last_name: lastName
+        };
+        
+        const { error } = await signUp(email, password, userData);
+        if (!error) {
+          // After signup, redirect to login page or show a verification message
+          navigate('/login');
+        }
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (

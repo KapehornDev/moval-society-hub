@@ -5,9 +5,9 @@ import {
   Banknote,
   Vote,
   Users,
-  Gavel, // Changed from GavelSquare to Gavel
+  Gavel,
   Settings,
-  Logout
+  LogOut
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -98,7 +98,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, onClose }) => {
             </Link>
           </div>
           <Button variant="ghost" className="w-full justify-start" onClick={handleLogout}>
-            <Logout className="inline-block mr-2" size={20} />
+            <LogOut className="inline-block mr-2" size={20} />
             Logout
           </Button>
         </div>
