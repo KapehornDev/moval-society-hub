@@ -5,7 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Wallet, Clock, ArrowUpRight, ArrowDownLeft, Plus } from 'lucide-react';
+import { Clock, ArrowUpRight, ArrowDownLeft, Plus } from 'lucide-react';
+import { WalletIcon } from 'lucide-react'; // Renamed import to WalletIcon
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface Transaction {
@@ -84,7 +85,7 @@ const Wallet = () => {
                   <p className="text-sm text-gray-500">Movals</p>
                 </div>
                 <div className="p-4 rounded-full bg-moval-50">
-                  <Wallet className="h-8 w-8 text-moval-600" />
+                  <WalletIcon className="h-8 w-8 text-moval-600" /> {/* Changed Wallet to WalletIcon here */}
                 </div>
               </div>
               
