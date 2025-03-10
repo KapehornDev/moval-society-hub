@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MainLayout } from '../layouts/MainLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Clock, ArrowUpRight, ArrowDownLeft, Plus } from 'lucide-react';
-import { WalletIcon } from 'lucide-react'; // Renamed import to WalletIcon
+import { Wallet as WalletIcon } from 'lucide-react'; // Renamed to WalletIcon to avoid conflict
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface Transaction {

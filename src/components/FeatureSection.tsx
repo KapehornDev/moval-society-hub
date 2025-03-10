@@ -1,11 +1,10 @@
-
 import React, { useEffect, useRef } from 'react';
 import { 
   Wallet, 
   BanknoteIcon, 
   Vote, 
   Users, 
-  GavelSquare, 
+  Gavel, 
   Landmark 
 } from 'lucide-react';
 
@@ -89,7 +88,7 @@ export const FeatureSection: React.FC = () => {
       delay: 400
     },
     {
-      icon: <GavelSquare size={24} />,
+      icon: <Gavel size={24} />,
       title: 'Justice Department',
       description: 'A fair system for dispute resolution and enforcement of community rules.',
       delay: 500
