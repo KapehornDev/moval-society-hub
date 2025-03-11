@@ -32,10 +32,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Upload artifact
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
-          path: dist  # Change if your build output is in a different folder
+          path: dist  # Change if your build output folder is different
 
   deploy:
     needs: build
